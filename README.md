@@ -16,13 +16,13 @@ All these games work out of the box with PsPcSdk Emulator.
 Follow the instructions for your platform to install PsPcSdk Emulator.
 
 ### Windows
-1. Go to the [releases page](./releases/latest).
+1. Go to the [releases page](https://github.com/LNDF/PsPcSdkEmulator/releases/latest).
 1. Download the `version.dll` file from the latest version.
 1. Place the file in the same folder as the executable of the game. See below on how to find the game executable.
 1. Run the game. You will no longer see the PlayStation Login prompt.
 
 ### Linux
-1. Go to the [releases page](./releases/latest).
+1. Go to the [releases page](https://github.com/LNDF/PsPcSdkEmulator/releases/latest).
 1. Download the `version.dll` file from the latest version.
 1. Place the file in the same folder as the executable of the game. See below on how to find the game executable.
 1. Right-click the game on Steam and select Properties.
