@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="external\detours\src\creatwth.cpp" />
+    <ClCompile Include="external\detours\src\detours.cpp" />
+    <ClCompile Include="external\detours\src\disasm.cpp" />
+    <ClCompile Include="external\detours\src\disolarm.cpp" />
+    <ClCompile Include="external\detours\src\disolarm64.cpp" />
+    <ClCompile Include="external\detours\src\disolia64.cpp" />
+    <ClCompile Include="external\detours\src\disolx64.cpp" />
+    <ClCompile Include="external\detours\src\disolx86.cpp" />
+    <ClCompile Include="external\detours\src\image.cpp" />
+    <ClCompile Include="external\detours\src\modules.cpp" />
+    <ClCompile Include="src\net\http.cpp" />
+    <ClCompile Include="src\net\net.cpp" />
+    <ClCompile Include="src\net\psscloud.cpp" />
+    <ClCompile Include="src\sdk\dialog\common.cpp" />
+    <ClCompile Include="src\sdk\dialog\msg.cpp" />
+    <ClCompile Include="src\sdk\dialog\signin.cpp" />
+    <ClCompile Include="src\sdk\np\account.cpp" />
+    <ClCompile Include="src\sdk\np\auth.cpp" />
+    <ClCompile Include="src\sdk\np\callback.cpp" />
+    <ClCompile Include="src\sdk\np\misc.cpp" />
+    <ClCompile Include="src\sdk\np\session.cpp" />
+    <ClCompile Include="src\sdk\np\trophy.cpp" />
+    <ClCompile Include="src\sdk\np\uds.cpp" />
+    <ClCompile Include="src\sdk\pc.cpp" />
+    <ClCompile Include="src\sdk\np\webapi2.cpp" />
+    <ClCompile Include="src\sdk\rudp\rudp.cpp" />
+    <ClCompile Include="src\sdk\service\system.cpp" />
+    <ClCompile Include="src\sdk\service\user.cpp" />
+    <ClCompile Include="src\utils.cpp" />
+    <ClCompile Include="src\sdk\voicechat\voicechat.cpp" />
+    <ClInclude Include="external\detours\src\uimports.cpp" />
+    <ClCompile Include="src\loader\hooks.cpp" />
+    <ClCompile Include="src\loader\dllmain.cpp" />
+    <ClCompile Include="src\loader\procs.c" />
+    <ClInclude Include="src\net\http.h" />
+    <ClInclude Include="src\net\net.h" />
+    <ClInclude Include="src\net\psscloud.h" />
+    <ClInclude Include="src\net\pssresponses.h" />
+    <ClInclude Include="src\sdk\dialog\signin.h" />
+    <ClInclude Include="src\sdk\np\account.h" />
+    <ClInclude Include="src\sdk\np\auth.h" />
+    <ClInclude Include="src\sdk\np\callback.h" />
+    <ClInclude Include="src\sdk\np\misc.h" />
+    <ClInclude Include="src\sdk\np\session.h" />
+    <ClInclude Include="src\sdk\np\uds.h" />
+    <ClInclude Include="src\sdk\np\webapi2.h" />
+    <ClInclude Include="src\sdk\pc.h" />
+    <ClInclude Include="src\sdk\sce.h" />
+    <ClInclude Include="src\sdk\dialog\common.h" />
+    <ClInclude Include="src\sdk\sceerror.h" />
+    <ClInclude Include="src\sdk\service\system.h" />
+    <ClInclude Include="src\sdk\service\user.h" />
+    <ClInclude Include="src\utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="src\loader\proxy.asm">
+      <FileType>Document</FileType>
+    </MASM>
+    <None Include="src\loader\proxy.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="external\detours\include\detours.h" />
+    <ClInclude Include="external\detours\include\detver.h" />
+    <ClInclude Include="src\loader\hooks.h" />
+    <ClInclude Include="src\loader\procs.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\loader\resource.rc" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{8a87caf8-e44b-4759-89d6-bf45c9f1ed95}</ProjectGuid>
+    <RootNamespace>PsPcSdkEmulator</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;PSPCSDKEMULATOR_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)external\detours\include;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>$(ProjectDir)src\loader\proxy.def</ModuleDefinitionFile>
+      <AdditionalDependencies>shlwapi.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>signtool sign /f "$(ProjectDir)src\loader\cert.pfx" /p "PsPcSdk Emulator" /fd certHash /t http://timestamp.digicert.com /v "$(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName).dll"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;PSPCSDKEMULATOR_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)external\detours\include;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>$(ProjectDir)src\loader\proxy.def</ModuleDefinitionFile>
+      <AdditionalDependencies>shlwapi.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+    <PostBuildEvent>
+      <Command>signtool sign /f "$(ProjectDir)src\loader\cert.pfx" /p "PsPcSdk Emulator" /fd certHash /t http://timestamp.digicert.com /v "$(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName).dll"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;PSPCSDKEMULATOR_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)external\detours\include;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>$(ProjectDir)src\loader\proxy.def</ModuleDefinitionFile>
+      <AdditionalDependencies>shlwapi.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>signtool sign /f "$(ProjectDir)src\loader\cert.pfx" /p "PsPcSdk Emulator" /fd certHash /t http://timestamp.digicert.com /v "$(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName).dll"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;PSPCSDKEMULATOR_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)external\detours\include;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>$(ProjectDir)src\loader\proxy.def</ModuleDefinitionFile>
+      <AdditionalDependencies>shlwapi.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+    <PostBuildEvent>
+      <Command>signtool sign /f "$(ProjectDir)src\loader\cert.pfx" /p "PsPcSdk Emulator" /fd certHash /t http://timestamp.digicert.com /v "$(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName).dll"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>
