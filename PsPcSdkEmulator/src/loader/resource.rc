@@ -5,8 +5,8 @@
 // Copyright (c) 2025 Lander Gallastegi (LNDF)
 
 1 VERSIONINFO
-FILEVERSION 0,0,3,7127
-PRODUCTVERSION 3,0,0,13
+FILEVERSION 0,0,4,441
+PRODUCTVERSION 3,50,0,11
 FILEOS 0x40004
 FILETYPE 0x2
 
@@ -16,12 +16,12 @@ BEGIN
 		BLOCK "000004b0"
 		BEGIN
 			VALUE "CompanyName", "Sony Interactive Entertainment Inc."
-			VALUE "FileDescription", "PlayStation(R) PC SDK Runtime 24.11-03.00.00.13"
+			VALUE "FileDescription", "PlayStation(R) PC SDK Runtime 24.12-03.50.00.11"
 			VALUE "InternalName", "PsPcSdk.dll"
 			VALUE "LegalCopyright", "Copyright (C) 2024 Sony Interactive Entertainment Inc."
 			VALUE "OriginalFilename", "PsPcSdk.dll"
-			VALUE "ProductName", "PlayStation(R) PC SDK Runtime 24.11-03.00.00.13"
-			VALUE "ProductVersion", "24.11-03.00.00.13-00.00.00.0.1"
+			VALUE "ProductName", "PlayStation(R) PC SDK Runtime 24.12-03.50.00.11"
+			VALUE "ProductVersion", "24.12-03.50.00.11-00.00.00.0.1"
 		END
 	END
 	
