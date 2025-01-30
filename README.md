@@ -9,6 +9,7 @@ The utility has been tested on the Steam versions of the following games:
 - Horizon Zero Dawn: Remastered
 - Until Dawn
 - LEGO Horizon Adventures
+- Marvel's Spider-Man 2
 
 All these games work out of the box with PsPcSdk Emulator.
 
