@@ -1,6 +1,8 @@
 # PsPcSdk Emulator
 This utility allows you to bypass the PlayStation Network account login requirement for various Sony-published games on PC.
 
+Now that Sony has made Playstation Network accounts optional on PC, you can use this utility to obtain the benefits of a PSN account without creating one.
+
 __NOTE__: This does not work for the online components of those games. Do not use it for that purpose.
 
 ## Tested Games
