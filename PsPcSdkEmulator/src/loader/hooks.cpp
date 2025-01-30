@@ -48,7 +48,7 @@ static HANDLE WINAPI HookFindFirstFileExA(LPCSTR lpFileName, FINDEX_INFO_LEVELS 
 
 	// We set the what would be the SDK directory
 	strncpy_s(data.cFileName, sizeof(data.cFileName), lpFileName, _TRUNCATE);
-	strncpy_s(data.cFileName + strlen(data.cFileName) - 1, sizeof(data.cFileName) - strlen(data.cFileName) + 1, "3.00.00.13", _TRUNCATE);
+	strncpy_s(data.cFileName + strlen(data.cFileName) - 1, sizeof(data.cFileName) - strlen(data.cFileName) + 1, "3.50.00.11", _TRUNCATE);
 	GetShortPathNameA(data.cFileName, data.cAlternateFileName, sizeof(data.cAlternateFileName));
 
 	return reinterpret_cast<HANDLE>(&g_fake_handle);
