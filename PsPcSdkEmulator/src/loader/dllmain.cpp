@@ -5,6 +5,8 @@
  * Copyright (c) 2025 Lander Gallastegi (LNDF)
  */
 
+#include "dllmain.h"
+
 #include "hooks.h"
 #include "procs.h"
 #include <windows.h>
@@ -13,6 +15,22 @@
 #include <cinttypes>
 
 static HMODULE g_version_dll = nullptr;
+
+wchar_t* g_cuurent_dll_path = nullptr;
+
+static void get_current_dll_path(HMODULE mod) {
+	DWORD size = MAX_PATH;
+	g_cuurent_dll_path = new wchar_t[size];
+retry:
+	GetModuleFileNameW(mod, g_cuurent_dll_path, size);
+	if (GetLastError() == ERROR_INSUFFICIENT_BUFFER) {
+		size *= 2;
+		delete[] g_cuurent_dll_path;
+		g_cuurent_dll_path = new wchar_t[size];
+		goto retry;
+	}
+}
+
 BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved) {
     switch (ul_reason_for_call) {
         case DLL_PROCESS_ATTACH: {
@@ -31,7 +49,7 @@ BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpRese
 				}
 
 			}
-
+			get_current_dll_path(hModule);
 			pspcsdk_hooks_setup();
             break;
 		}
@@ -40,6 +58,11 @@ BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpRese
 
 			if (g_version_dll) {
 				FreeLibrary(g_version_dll);
+			}
+
+			if (g_cuurent_dll_path) {
+				delete[] g_cuurent_dll_path;
+			}
 			break;
     }
     return TRUE;

@@ -53,6 +53,7 @@
     <ClCompile Include="src\loader\hooks.cpp" />
     <ClCompile Include="src\loader\dllmain.cpp" />
     <ClCompile Include="src\loader\procs.c" />
+    <ClInclude Include="src\loader\dllmain.h" />
     <ClInclude Include="src\net\http.h" />
     <ClInclude Include="src\net\net.h" />
     <ClInclude Include="src\net\psscloud.h" />
