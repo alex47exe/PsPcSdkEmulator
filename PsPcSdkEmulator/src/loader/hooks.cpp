@@ -6,7 +6,10 @@
  */
 
 #include "hooks.h"
+
 #include "../utils.h"
+#include "dllmain.h"
+#include "procs.h"
 #include <Windows.h>
 #include <SoftPub.h>
 #include <Shlwapi.h>
@@ -84,7 +87,7 @@ static BOOL WINAPI HookPathFileExistsA(LPCSTR pszPath) {
 static DWORD APIENTRY HookGetFileVersionInfoSizeA(LPCSTR lptstrFilename, LPDWORD lpdwHandle) {
 	if (strendswith(lptstrFilename, "PsPcSdk.dll")) {
 		// We include the same version info as PsPcSdk.dll
-		return OriginalGetFileVersionInfoSizeA("version.dll", lpdwHandle);
+		return GetFileVersionInfoSizeW(g_cuurent_dll_path, lpdwHandle);
 	}
 	return OriginalGetFileVersionInfoSizeA(lptstrFilename, lpdwHandle);
 }
@@ -92,7 +95,10 @@ static DWORD APIENTRY HookGetFileVersionInfoSizeA(LPCSTR lptstrFilename, LPDWORD
 static BOOL APIENTRY HookGetFileVersionInfoA(LPCSTR lptstrFilename, DWORD dwHandle, DWORD dwLen, LPVOID lpData) {
 	if (strendswith(lptstrFilename, "PsPcSdk.dll")) {
 		// We include the same version info as PsPcSdk.dll
-		return OriginalGetFileVersionInfoA("version.dll", dwHandle, dwLen, lpData);
+#pragma warning(push)
+#pragma warning(disable: 6388)
+		return GetFileVersionInfoW(g_cuurent_dll_path, dwHandle, dwLen, lpData);
+#pragma warning(pop)
 	}
 	return OriginalGetFileVersionInfoA(lptstrFilename, dwHandle, dwLen, lpData);
 }
@@ -100,7 +106,7 @@ static BOOL APIENTRY HookGetFileVersionInfoA(LPCSTR lptstrFilename, DWORD dwHand
 static HANDLE WINAPI HookCreateFileA(LPCSTR lpFileName, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile) {
 	if (strendswith(lpFileName, "PsPcSdk.dll")) {
 		// Used to obtain the cerificate from PsPcSdk.dll. We use a self signed certificate.
-		return OriginalCreateFileA("version.dll", dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
+		return CreateFileW(g_cuurent_dll_path, dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
 	}
 	return OriginalCreateFileA(lpFileName, dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
 }
@@ -137,7 +143,7 @@ static HMODULE WINAPI HookLoadLibraryExA(LPCSTR lpLibFileName, HANDLE hFile, DWO
 	if (strendswith(lpLibFileName, "PsPcSdk.dll")) {
 		// The game may pass the handle to FreeLibrary
 		pspcsdk_hooks_cleanup();
-		return LoadLibraryA("version.dll");
+		return LoadLibraryW(g_cuurent_dll_path);
 	}
 	return OriginalLoadLibraryExA(lpLibFileName, hFile, dwFlags);
 }
@@ -161,9 +167,13 @@ void pspcsdk_hooks_setup() {
 	OriginalFindNextFileA = &FindNextFileA;
 	OriginalFindClose = &FindClose;
 	OriginalPathFileExistsA = &PathFileExistsA;
-	OriginalGetFileVersionInfoSizeA = &GetFileVersionInfoSizeA;
-	OriginalGetFileVersionInfoA = &GetFileVersionInfoA;
+
+	// See procs.c
+	OriginalGetFileVersionInfoSizeA = (decltype(OriginalGetFileVersionInfoSizeA)) g_version_dll_procs[4];
+	OriginalGetFileVersionInfoA = (decltype(OriginalGetFileVersionInfoA)) g_version_dll_procs[0];
+
 	OriginalCreateFileA = &CreateFileA;
+
 	OriginalWinVerifyTrust = (decltype(OriginalWinVerifyTrust)) GetProcAddress(g_wintrust_dll, "WinVerifyTrust");
 	OriginalWTHelperProvDataFromStateData = (decltype(OriginalWTHelperProvDataFromStateData))GetProcAddress(g_wintrust_dll, "WTHelperProvDataFromStateData");
 	OriginalWTHelperGetProvSignerFromChain = (decltype(OriginalWTHelperGetProvSignerFromChain))GetProcAddress(g_wintrust_dll, "WTHelperGetProvSignerFromChain");
