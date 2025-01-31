@@ -40,6 +40,23 @@ Follow the instructions for your platform to install PsPcSdk Emulator.
 
 __IMPORTANT__ note on Unreal Engine games (Until Dawn and LEGO Horizon Adventures): Unreal Engine games store the real game executable in a different location. You can identify Unreal Engine games because they usually have an `Engine` folder, another folder with the name of the project (`Glow` for LEGO Horizon Adventures and `Bates` for Until Dawn), and an executable file. In Unreal Engine games, the real executable is located under the folder with the project name, then `Binaries`, and then `Win64`. Place `version.dll` there.
 
+### Custom DLL loader (advanced users)
+PsPcSdk Emulator supports being loaded by an external DLL loader. Just rename `version.dll` to something else an point the DLL loader to it.
+
+This can be useful when loading multiple mods that use the same DLL name (`version.dll` in this case).
+
+## How it works
+All the source code is located under `PsPcSdkEmulator/src/` and the project is dividen in several parts.
+
+### Loader
+Located in the `loader` folder, this part of PsPcSdk Emulator is responsable for making the game load this implementation of the Playstation SDK insteed of the one provided by Sony. To achive that, Microsoft Detours is used to hook some Win32 functions.
+
+### SDK
+The `sdk` folder provides stubs and some implementations of the Playstation SDK functions. Once the loader makes the game load PsPcSdk Emulator as if it was the Playstation SDK, the game links against this implementations insteed of the original ones.
+
+### Net (pss-cloud.net / PSNAccountLinking library)
+Playstation games on PC are built with a Playstation account linking library (`PSNAccountLinking`) which is responsable for linking Steam and PSN accounts. `PSNAccountLinking` relies on `pss-cloud.net` for account linking. Inside the `net` folder there is a local HTTP server that is started when the game calls the `scePsPcInitializeInternal()` SDK function. That HTTP server emulates `pss-cloud.net` telling the game that a PSN account is already linked to the Steam account and accepting any new link requqests. Additionaly, WinHttp functions are hooked so that requests to `pss-cloud.net` are redirected to the local HTTP server.
+
 ## Building
 1. Clone this repository.
 1. Open the solution in Visual Studio (built on 2022).
