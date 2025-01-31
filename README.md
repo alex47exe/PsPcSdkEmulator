@@ -64,6 +64,6 @@ See the [LICENSE](./LICENSE) file for details.
 PsPcSdk Emulator uses [Microsoft Detours](https://github.com/microsoft/Detours) for hooking Windows functions.
 
 ## Credits
-To the author of the nopcpssdk mod for God of War: Ragnarok. I took some ideas from that mod about the DLL loading process. Also, nopcpssdk was the reason I made this project, as it showed that it could be done. I'm not naming him here since he deleted the mod.
+To the author of the nopcpssdk mod for God of War: Ragnarök. I took some ideas from that mod about the DLL loading process. Also, nopcpssdk was the reason I made this project, as it showed that it could be done. I'm not naming him here since he deleted the mod.
 
 Nixxes for leaving some logging enabled on Horizon Zero Dawn Remastered. It helped.
