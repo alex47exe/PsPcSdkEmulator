@@ -7,7 +7,7 @@ __NOTE__: This does not work for the online components of those games. Do not us
 
 ## Tested Games
 The utility has been tested on the Steam versions of the following games:
-- God of War: Ragnarok
+- God of War: Ragnarök
 - Horizon Zero Dawn: Remastered
 - Until Dawn
 - LEGO Horizon Adventures
