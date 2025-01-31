@@ -15,6 +15,9 @@ The utility has been tested on the Steam versions of the following games:
 
 All these games work out of the box with PsPcSdk Emulator.
 
+## Screenshots
+![Marvel's Spider-Man 2](./media/msm2.png)
+
 ## How to Use
 Follow the instructions for your platform to install PsPcSdk Emulator.
 
