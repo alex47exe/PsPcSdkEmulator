@@ -60,6 +60,10 @@ This project is licensed under the **Mozilla Public License 2.0**.
 You are free to use, modify, and distribute this project, as long as you comply with the terms of MPL-2.0.
 See the [LICENSE](./LICENSE) file for details.
 
+### Third-Party Dependencies
+This project uses **Microsoft Detours**, which is licensed under the **MIT License**.  
+You can see the license [here](./PsPcSdkEmulator/external/detours/LICENSE).
+
 ## Libraries Used
 PsPcSdk Emulator uses [Microsoft Detours](https://github.com/microsoft/Detours) for hooking Windows functions.
 
