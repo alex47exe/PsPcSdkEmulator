@@ -11,10 +11,19 @@
 #include <detours.h>
 #include <vector>
 #include <type_traits>
+#include <string>
+#include <optional>
 
 bool ismemzero(void* ptr, size_t size);
 bool strendswith(const char* str, const char* suffix);
 bool wstrendswith(const wchar_t* str, const wchar_t* suffix);
+
+// INI file reading utilities
+std::wstring GetModulePath(HMODULE hModule);
+std::string GetIniFilePath();
+bool CreateDefaultIniFile(const std::string& iniPath);
+std::optional<std::string> ReadIniValue(const std::string& iniPath, const char* section, const char* key, const char* defaultValue = nullptr);
+std::optional<uint64_t> ReadIniHexValue(const std::string& iniPath, const char* section, const char* key, uint64_t defaultValue = 0);
 
 #define DETOUR_CALL(x) { LONG e = x; if (e != NO_ERROR) { DetourTransactionAbort(); return; } }
 

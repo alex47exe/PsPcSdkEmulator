@@ -38,7 +38,16 @@ static void print_property(ScePsPcProperty* property) {
 
 PSPCSDK_API SceResult scePsPcInitializeInternal(ScePsPcInitializeInternalParam param) {
 	pc_sdk_reset();
-	load_fake_account(DEFAULT_FAKE_ACCOUNT_ID);
+	
+	// Load PSN configuration from INI
+	load_config_from_ini();
+	
+	// Load the fake account with our custom ID from the INI file
+	SceNpAccount* existingAccount = get_fake_account_by_account_id(g_custom_account_id);
+	if (!existingAccount) {
+		load_fake_account(g_custom_account_id);
+	}
+	
 	pspcsdk_net_setup();
 	printf("PsPcSdkEmulator initialized\n");
 	printf("Properties:\n");

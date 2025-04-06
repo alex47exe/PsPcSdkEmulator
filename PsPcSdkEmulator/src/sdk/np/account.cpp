@@ -55,7 +55,7 @@ PSPCSDK_API SceResult sceNpGetOnlineId(int user_id, SceNpOnlineId* id) {
 		return SCE_ERROR_NP_INVALID_PARAM; // this is not the correct error code
 	}
 	memset(id, 0, sizeof(SceNpOnlineId));
-	strcpy_s(id->name, "Player");
+	strcpy_s(id->name, account->username.c_str());
 	return SCE_OK;
 }
 

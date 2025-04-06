@@ -142,6 +142,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <TargetName>PsPcSdkEmu</TargetName>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -162,7 +165,7 @@
       <AdditionalDependencies>shlwapi.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>signtool sign /f "$(ProjectDir)src\loader\cert.pfx" /p "PsPcSdk Emulator" /fd certHash /t http://timestamp.digicert.com /v "$(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName).dll"
+      <Command>signtool sign /f "$(ProjectDir)src\loader\cert.pfx" /p "PsPcSdk Emulator" /fd certHash /t http://timestamp.digicert.com /v "$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName).dll"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -192,7 +195,7 @@
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PostBuildEvent>
-      <Command>signtool sign /f "$(ProjectDir)src\loader\cert.pfx" /p "PsPcSdk Emulator" /fd certHash /t http://timestamp.digicert.com /v "$(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName).dll"
+      <Command>signtool sign /f "$(ProjectDir)src\loader\cert.pfx" /p "PsPcSdk Emulator" /fd certHash /t http://timestamp.digicert.com /v "$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName).dll"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -216,7 +219,7 @@
       <AdditionalDependencies>shlwapi.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>signtool sign /f "$(ProjectDir)src\loader\cert.pfx" /p "PsPcSdk Emulator" /fd certHash /t http://timestamp.digicert.com /v "$(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName).dll"
+      <Command>signtool sign /f "$(ProjectDir)src\loader\cert.pfx" /p "PsPcSdk Emulator" /fd certHash /t http://timestamp.digicert.com /v "$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName).dll"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -246,7 +249,7 @@
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PostBuildEvent>
-      <Command>signtool sign /f "$(ProjectDir)src\loader\cert.pfx" /p "PsPcSdk Emulator" /fd certHash /t http://timestamp.digicert.com /v "$(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName).dll"
+      <Command>signtool sign /f "$(ProjectDir)src\loader\cert.pfx" /p "PsPcSdk Emulator" /fd certHash /t http://timestamp.digicert.com /v "$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName).dll"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

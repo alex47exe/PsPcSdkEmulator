@@ -40,9 +40,13 @@ static std::optional<std::string> get_response_string(const std::string_view uri
 			ss << PSSCLOUD_RESPONSE_REGISTRATION_PRODUCT_PART2;
 			return ss.str();
 		} else if (action == "registeredAccount") {
+			// Use the custom account ID instead of the default one
+			auto account = get_fake_account(0); // Get the first account
+			uint64_t accountId = account ? account->account_id : DEFAULT_FAKE_ACCOUNT_ID;
+			
 			std::ostringstream ss;
 			ss << PSSCLOUD_RESPONSE_REGISTERED_ACCOUNT_PART1;
-			ss << DEFAULT_FAKE_ACCOUNT_ID;
+			ss << accountId;
 			ss << PSSCLOUD_RESPONSE_REGISTERED_ACCOUNT_PART2;
 			return ss.str();
 		} else if (action == "newRegistrationURL") {
@@ -52,9 +56,13 @@ static std::optional<std::string> get_response_string(const std::string_view uri
 			ss << PSSCLOUD_RESPONSE_NEW_REGISTRATION_URL_PART2;
 			return ss.str();
 		} else if (action == "link") {
+			// Use the custom account ID instead of the default one
+			auto account = get_fake_account(0); // Get the first account
+			uint64_t accountId = account ? account->account_id : DEFAULT_FAKE_ACCOUNT_ID;
+			
 			std::ostringstream ss;
 			ss << PSSCLOUD_RESPONSE_LINK_PART1;
-			ss << DEFAULT_FAKE_ACCOUNT_ID;
+			ss << accountId;
 			ss << PSSCLOUD_RESPONSE_LINK_PART2;
 			return ss.str();
 		}
@@ -63,22 +71,14 @@ static std::optional<std::string> get_response_string(const std::string_view uri
 }
 
 static void psscloud_request_handler(const std::string& method, const std::string& uri, const std::unordered_map<std::string, std::string>& headers, const std::string& body, HttpResponse& response) {
-	if (uri.find("/gs") == 0) {
-		std::string_view uri_view = std::string_view(uri).substr(3);
-		size_t slash = uri_view.find('/');
-		if (slash != std::string_view::npos) {
-			uri_view = uri_view.substr(slash + 1);
-			auto response_str = get_response_string(uri_view);
-			if (response_str) {
-				response.status = "200 OK";
-				response.body = *response_str;
-				response.headers["Content-Type"] = "application/json";
-				return;
-			}
-		}
+	std::optional<std::string> responseString = get_response_string(uri);
+	if (responseString) {
+		response.status = "200 OK";
+		response.body = *responseString;
+		return;
 	}
 	response.status = "404 Not Found";
-	response.body = "Not Found";
+	response.body = "Resource not found.";
 }
 
 void psscloud_server_start() {
